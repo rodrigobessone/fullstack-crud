@@ -1,0 +1,100 @@
+Desenvolvimento de um sistema para cadastrar clientes, com a capacidade de gerenciar diversos contatos associados.
+
+Antes de iniciar, verifique se o Node.js e o npm estão instalados em sua máquina. Caso ainda não estejam, você pode obtê-los em nodejs.org.
+
+Após a instalação do Node.js e do npm, será necessário instalar as dependências do projeto listadas no arquivo package.json.
+
+bash
+
+npm install
+
+Não se esqueça de preencher corretamente as variáveis de ambiente.
+
+Os comandos a seguir, executados no terminal, garantirão o download e a instalação de todas as bibliotecas necessárias para o projeto.
+
+Execute as migrações:
+
+bash
+
+npm run typeorm:run
+
+Para iniciar o projeto em um ambiente de desenvolvimento, utilize o seguinte comando:
+
+bash
+
+npm run dev
+
+Este comando inicializará o servidor em modo de desenvolvimento, permitindo que você faça alterações no código e veja as atualizações em tempo real.
+
+Rotas do Usuário
+
+    Criação de Usuário
+        Descrição: Cria um novo usuário na aplicação.
+        Rota: POST /users
+
+json
+
+{
+  "name": "nome_usuario",
+  "email": "usuario@dominio.com",
+  "password": "senha_segura",
+  "confirm": "senha_segura",
+  "phoneNumber": "novo_numero_contato"
+}
+
+    Login do Usuário
+        Descrição: Realiza o login do usuário na aplicação.
+        Rota: POST /login
+
+json
+
+{
+  "email": "usuario@dominio.com",
+  "password": "senha_segura"
+}
+
+    Leitura de Usuários
+        Descrição: Obtém a lista de usuários cadastrados.
+        Rota: GET /users
+
+    Remoção de Usuário
+        Descrição: Remove um usuário específico com base no ID fornecido.
+        Rota: DELETE /users/:id
+
+Rotas de Contato
+
+    Criação de Contato
+        Descrição: Cria um novo contato associado a um usuário específico.
+        Rota: POST /:id/user
+
+json
+
+{
+  "name": "Nome Contato",
+  "email": "contato@dominio.com",
+  "phoneNumber": "novo_numero_contato"
+}
+
+    Leitura de Todos os Contatos de um Usuário
+        Descrição: Obtém a lista de todos os contatos associados a um usuário específico.
+        Rota: GET /contacts
+
+    Leitura de um Contato Específico
+        Descrição: Obtém informações detalhadas de um contato específico associado a um usuário.
+        Rota: GET /contacts/:id
+
+    Atualização de Contato
+        Descrição: Atualiza as informações de um contato específico associado a um usuário.
+        Rota: PATCH /contacts/:id
+
+json
+
+{
+  "name": "Novo Nome Contato",
+  "email": "novo_contato@dominio.com",
+  "phoneNumber": "novo_numero_contato"
+}
+
+    Remoção de Contato
+        Descrição: Remove um contato específico associado a um usuário.
+        Rota: DELETE /contacts/:id
